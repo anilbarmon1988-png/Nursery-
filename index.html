@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d6efd">
 <meta charset="UTF-8">
 <title>সমিতি সফটওয়্যার - ফাইনাল</title>
 <style>
@@ -3989,6 +3991,13 @@ if(role === "member"){
   viewProfile(memberId);
 }else{
   show("dashboard");
+}
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
 }
 </script>
 </body>

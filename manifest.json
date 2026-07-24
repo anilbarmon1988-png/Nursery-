@@ -1,0 +1,10 @@
+{
+  "name": "Nursery Software",
+  "short_name": "Nursery",
+  "description": "নাসারি উন্নয়ন সংস্থার ব্যবস্থাপনা সফটওয়্যার",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d6efd",
+  "orientation": "portrait"
+}
