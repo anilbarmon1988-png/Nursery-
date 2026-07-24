@@ -1,0 +1,3995 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<title>সমিতি সফটওয়্যার - ফাইনাল</title>
+<style>
+body{
+  margin:0;
+  background:url("Fbackground.jpg") center/cover fixed no-repeat;
+  color:black;
+}
+/* ===== Header ===== */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#020617;
+  padding:12px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#facc15;
+  box-shadow:0 2px 8px rgba(0,0,0,0.6);
+  z-index:1000;
+}
+
+/* ===== Marquee ===== */
+marquee{
+  position:fixed;
+  top:50px;
+  width:100%;
+  background:#111827;
+  color:#f87171;
+  padding:6px;
+  font-weight:bold;
+  z-index:999;
+}
+/* ===== Menu ===== */
+.menu{
+  margin-top:160px;
+  background:#020617;
+  padding:6px;
+  text-align:center;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+/* ===== Cash Box ===== */
+.cash{
+  position:fixed;
+  top:75px;
+  width:100%;
+  background:linear-gradient(135deg,#14532d,#0f172a);
+  padding:10px;
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  color:white;
+  z-index:990;
+}
+
+/* ===== Name Click ===== */
+.nameClick{
+  cursor:pointer;
+  color:#22c55e;
+  font-weight:bold;
+}
+.nameClick:hover{
+  text-decoration:underline;
+}
+
+/* ===== Buttons ===== */
+button{
+  padding:9px 18px;
+  margin:4px;
+  background:#2563eb;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:14px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#1d4ed8;
+  transform:scale(1.05);
+}
+
+
+/* ===== Section ===== */
+.section{
+  display:none;
+  padding:10px;
+}
+
+/* ===== Table Container ===== */
+.table-container{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:auto;
+  max-height:300px;
+  border:1px solid #334155;
+  background:#0f172a;
+}
+
+/* ===== Table ===== */
+table{
+  width:100%;
+  min-width:900px; /* 🔥 responsive scroll */
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:13px;
+}
+
+/* ===== Table Header ===== */
+th{
+  border:1px solid #334155;
+  padding:6px;
+  text-align:center;
+  background:#1e40af;
+  color:white;
+  position:sticky;
+  top:0;
+}
+
+/* ===== Table Data ===== */
+td{
+  border:1px solid #334155;
+  padding:5px;
+  text-align:center;
+  word-break:break-word;
+  background:#1e293b;
+  color:#f8fafc;
+}
+
+/* ===== Image ===== */
+img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* ===== Input ===== */
+input,select{
+  padding:6px;
+  margin:3px;
+  width:120px;
+  font-size:13px;
+  background:#fef3c7;
+  border:2px solid #f59e0b;
+  border-radius:5px;
+}
+
+/* ===== Input Focus ===== */
+input:focus{
+  background:#fef08a;
+  border-color:#f59e0b;
+  box-shadow:0 0 6px #f59e0b;
+  outline:none;
+}
+
+/* ===== Mobile ===== */
+@media(max-width:768px){
+  body{
+    margin-top:150px;
+  }
+
+  table{
+    min-width:800px;
+    font-size:12px;
+  }
+
+  button{
+    font-size:11px;
+    padding:5px 10px;
+  }
+
+  img{
+    width:40px;
+    height:40px;
+  }
+}
+
+#miniLogin{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  background:#111827;
+  color:#facc15;
+  padding:8px 12px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:13px;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+.card{
+  background:#0f172a;
+  color:white;
+  padding:10px;        /* আগে 15px ছিল */
+  border-radius:8px;
+  text-align:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+  font-size:10px;      /* 🔥 ছোট করা */
+}
+
+.card b{
+  display:block;
+  font-size:16px;      /* আগে 22px ছিল */
+  margin-top:3px;
+  color:#22c55e;
+}
+
+.cash{
+  background:linear-gradient(135deg,#14532d,#0f172a);
+}
+</style>
+</head>
+<body>
+<header>গাভী,পালন,সমবায়,সমিতি লি:</header>
+<marquee>গণপ্রজাতন্রী বাংলাদেশ সরকার অনুমোদিত গাভী পালন সমবায় সমিতি লি: পিরোজপুর মধ্য পাড়া মধুপুর, টাংগাইল, মোবাইল: ০১৭০০ ৫২৭৮৬৪</marquee>
+<div class="cash" id="cashBox">মোট ক্যাশ: 0</div>
+<div id="miniLogin" onclick="showLoginPanel()">
+🔐 Login
+
+</div>
+<!-- ================= LOGIN PAGE ================= -->
+<div id="loginBox"
+style="display:none;
+position:fixed;
+bottom:60px;
+right:15px;
+background:white;
+padding:10px;
+border-radius:10px;
+z-index:9999;">
+
+  <input id="miniLoginUsername"
+  placeholder="Username"><br>
+
+  <input id="miniLoginPassword"
+  type="password"
+  placeholder="Password"><br><br>
+
+  <button onclick="miniLogin()">
+  Login
+  </button>
+
+  <hr>
+
+  <!-- ✔️ OTP PART এখানে যোগ করো -->
+  <input type="text"
+  id="otpInput"
+  placeholder="Enter OTP"><br><br>
+
+  <button onclick="verifyOTP()">
+  Verify OTP
+  </button>
+
+</div>
+
+<!-- ================= MENU ================= -->
+<div class="menu">
+
+<button onclick="show('dashboard')">
+Dashboard
+</button>
+
+<button onclick="show('members')">
+সদস্য
+</button>
+
+<button onclick="show('saving')">
+সঞ্চয়
+</button>
+
+<button onclick="show('loan')">
+লোন
+</button>
+
+<button onclick="show('profit')">
+লাভ
+</button>
+
+<button onclick="show('expense')">
+ব্যয়
+</button>
+
+<button onclick="show('report')">
+মাসিক রিপোর্ট
+</button>
+<button onclick="show('committee')">কার্যকরী কমিটি</button>
+<button class="admin-btn"
+onclick="show('scanBox'); startQRScan()"
+style="background:#16a34a;">
+QR Scan
+</button>
+
+<button class="admin-btn"
+onclick="show('password')">
+পাসওয়ার্ড পরিবর্তন
+</button>
+
+<button class="admin-btn"
+onclick="show('memberLogs')">
+Member Logs
+</button>
+
+<!-- ===== RESET ===== -->
+<button class="admin-btn"
+onclick="resetAllData()"
+style="background:red;color:white;">
+
+সব ডাটা ডিলিট
+
+</button>
+
+<!-- ===== LOGOUT ===== -->
+<button class="admin-btn"
+onclick="logout()"
+style="background:#dc2626;color:white;">
+
+Logout
+
+</button>
+
+<input type="file"
+id="restoreFile"
+style="display:none">
+
+</div>
+<!-- ===== SECTION AREA ===== -->
+
+<div id="dashboard" class="section">
+  <div id="dashboardContent"></div>
+</div>
+
+<div id="members" class="section"></div>
+
+<div id="saving" class="section"></div>
+
+<div id="loan" class="section"></div>
+
+<div id="profit" class="section"></div>
+
+<div id="expense" class="section"></div>
+
+<div id="report" class="section"></div>
+
+<div id="committee" class="section"></div>
+
+<div id="memberLogs" class="section"></div>
+
+<div id="password" class="section"></div>
+
+<div id="profile" class="section"></div>
+
+<div id="scanBox" class="section">
+  <h3>QR Scanner</h3>
+  <div id="qrScanner"></div>
+</div>
+<!-- ================= SCRIPT ================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+  // ===== LOAN CALCULATION =====
+function getLoanCalc(loan){
+
+  let loanDate = new Date(loan.date);
+  let today = new Date();
+
+  let days =
+  Math.floor(
+    (today - loanDate)
+    /
+    (1000*60*60*24)
+  );
+
+  if(days < 0) days = 0;
+
+  // ৫% মাসিক লাভ
+  let dailyRate =
+  (loan.amount * 0.05) / 30;
+
+  let profit =
+  dailyRate * days;
+
+  let paidLoan =
+  (loan.payments || [])
+  .reduce((a,b)=>a + Number(b.amount),0);
+
+  let paidProfit =
+  profits
+  .filter(p=>String(p.loanId)===String(loan.id))
+  .reduce((a,b)=>a + Number(b.amount),0);
+
+  let remaining =
+  (loan.amount + profit)
+  -
+  (paidLoan + paidProfit);
+
+  if(remaining < 0)
+    remaining = 0;
+
+  return {
+
+    profit,
+    paidLoan,
+    paidProfit,
+    remaining
+
+  };
+}  
+
+// ================= SHOW LOGIN =================
+function showLoginPanel(){
+
+  let box = document.getElementById("loginBox");
+
+  box.style.display =
+  box.style.display === "block"
+  ? "none"
+  : "block";
+}
+
+// ================= SECURE LOGIN SYSTEM =================
+
+// ===== GLOBAL VARIABLES =====
+let loginAttempts = Number(localStorage.getItem("loginAttempts")) || 0;
+let isLocked = false;
+let lockTimer = null;
+let generatedOTP = null;
+let otpSent = false;
+// ===== AUTO LOGOUT =====
+let logoutTimer;
+
+function resetLogoutTimer(){
+
+  clearTimeout(logoutTimer);
+
+  logoutTimer = setTimeout(()=>{
+
+    alert("⏰ Session Expired");
+    logout();
+
+  }, 10 * 60 * 1000); // 10 মিনিট
+
+}
+
+// ===== USER ACTIVITY =====
+document.addEventListener("click", resetLogoutTimer);
+document.addEventListener("keypress", resetLogoutTimer);
+
+resetLogoutTimer();
+
+
+// ===== LOCK SYSTEM =====
+function lockLogin(){
+
+  clearTimeout(lockTimer); // পুরোনো lock cancel
+
+  isLocked = true;
+
+  alert("⛔ ৩ বার ভুল হয়েছে\n৫ মিনিট লক করা হয়েছে");
+
+  lockTimer = setTimeout(()=>{
+
+    isLocked = false;
+    loginAttempts = 0;
+    localStorage.setItem("loginAttempts", 0);
+
+  }, 5 * 60 * 1000);
+
+}
+
+function generateOTP(){
+
+  generatedOTP = Math.floor(100000 + Math.random() * 900000);
+
+  alert("🔐 OTP Sent: " + generatedOTP); 
+  // 👉 বাস্তবে এটা SMS/Email যাবে
+
+  otpSent = true;
+
+}
+// ===== ADMIN CHECK =====
+function isAdmin(){
+  return (
+    localStorage.getItem("role") === "admin" &&
+    localStorage.getItem("secureToken") === "SAMITY_SECURE"
+  );
+}
+
+// ===== PASSWORD CHECK =====
+function checkPassword(){
+
+  let pass = prompt("পাসওয়ার্ড লিখুন");
+
+  if(pass === null){
+    return false;
+  }
+
+  let savedPass =
+  localStorage.getItem("samity_pass") || "anil";
+
+  if(pass !== savedPass){
+
+    alert("❌ ভুল পাসওয়ার্ড");
+    return false;
+
+  }
+
+  return true;
+}
+// ===== PASSWORD CHECK =====
+function checkPassword(){
+
+  let pass = prompt("পাসওয়ার্ড লিখুন");
+
+  if(pass === null){
+    return false;
+  }
+
+  let savedPass =
+  localStorage.getItem("samity_pass") || "anil";
+
+  if(pass !== savedPass){
+
+    alert("❌ ভুল পাসওয়ার্ড");
+    return false;
+
+  }
+
+  return true;
+}
+// ===== UPDATE ADMIN VIEW =====
+function updateAdminView(){
+
+  let admin = isAdmin();
+
+  document.querySelectorAll(".admin-btn").forEach(btn=>{
+    btn.style.display = admin ? "inline-block" : "none";
+  });
+
+}
+
+
+// ===== LOGIN =====
+function miniLogin(){
+
+  if(isLocked){
+    alert("⛔ এখনই লগইন করা যাবে না, অপেক্ষা করুন");
+    return;
+  }
+
+  let username = document.getElementById("miniLoginUsername").value.trim();
+  let password = document.getElementById("miniLoginPassword").value.trim();
+
+  let savedPass = localStorage.getItem("samity_pass") || "anil";
+
+  if(username === "admin" && password === savedPass){
+
+    // ❌ এখান থেকে direct login remove
+    alert("📩 OTP পাঠানো হচ্ছে...");
+
+    generateOTP();
+
+  } else {
+
+    loginAttempts++;
+    localStorage.setItem("loginAttempts", loginAttempts);
+
+    alert("❌ Wrong Login\nAttempts: " + loginAttempts + "/3");
+
+    if(loginAttempts >= 3){
+      lockLogin();
+    }
+  }
+}
+function verifyOTP(){
+
+  let inputOTP = document.getElementById("otpInput").value.trim();
+
+  if(inputOTP == generatedOTP){
+
+    alert("✅ OTP Verified");
+
+    generatedOTP = null;
+    otpSent = false;
+
+    document.getElementById("otpInput").value = "";
+
+    localStorage.setItem("role", "admin");
+    localStorage.setItem("secureToken", "SAMITY_SECURE");
+
+    loginAttempts = 0;
+    localStorage.setItem("loginAttempts", 0);
+
+    updateAdminView();
+
+    document.getElementById("loginBox").style.display = "none";
+
+    resetLogoutTimer();
+
+    show("dashboard");
+
+  } else {
+
+    alert("❌ Wrong OTP");
+  }
+}
+// ===== LOGOUT =====
+function logout(){
+
+  localStorage.removeItem("role");
+  localStorage.removeItem("secureToken");
+
+  updateAdminView();
+
+  alert("✅ Logout Successful");
+
+  location.reload();
+
+}
+
+
+// ===== DEVTOOLS BLOCK =====
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.onkeydown = function(e){
+
+  if(e.keyCode == 123) return false; // F12
+
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 73) return false; // Ctrl+Shift+I
+
+  if(e.ctrlKey && e.keyCode == 85) return false; // Ctrl+U
+};
+
+
+// ===== HTTPS CHECK =====
+if(location.protocol !== "https:" && location.hostname !== "localhost"){
+  alert("⚠ HTTPS ছাড়া সিস্টেম নিরাপদ নয়");
+}
+// ================= LOCAL STORAGE =================
+let members =
+JSON.parse(localStorage.getItem("members")) || [];
+
+let savings =
+JSON.parse(localStorage.getItem("savings")) || [];
+
+let loans =
+JSON.parse(localStorage.getItem("loans")) || [];
+
+let profits =
+JSON.parse(localStorage.getItem("profits")) || [];
+
+let expenses =
+JSON.parse(localStorage.getItem("expenses")) || [];
+let committee = JSON.parse(localStorage.getItem("committee")) || [];
+let memberLogs =
+JSON.parse(localStorage.getItem("memberLogs")) || [];
+
+// == CASH CALCULATION ====//
+function getCash(){
+  let totalSaving = savings.reduce((a,b)=>a+b.amount,0);
+  let totalProfit = profits.reduce((a,b)=>a+b.amount,0);
+  let totalExpense = expenses.reduce((a,b)=>a+b.amount,0);
+  let totalLoanGiven = loans.reduce((a,b)=>a+b.amount,0);
+
+  let totalLoanRepayment = loans
+    .flatMap(l => l.payments || [])
+    .reduce((a,b)=>a+b.amount,0);
+
+  return totalSaving + totalProfit + totalLoanRepayment - totalExpense - totalLoanGiven;
+}
+// ================= SAVE =================
+function save(){
+
+  localStorage.setItem(
+    "members",
+    JSON.stringify(members)
+  );
+
+  localStorage.setItem(
+    "memberLogs",
+    JSON.stringify(memberLogs)
+  );
+
+  localStorage.setItem(
+    "savings",
+    JSON.stringify(savings)
+  );
+
+  localStorage.setItem(
+    "loans",
+    JSON.stringify(loans)
+  );
+
+  localStorage.setItem(
+    "profits",
+    JSON.stringify(profits)
+  );
+
+  localStorage.setItem(
+    "expenses",
+    JSON.stringify(expenses)
+  );
+
+  localStorage.setItem(
+    "committee",
+    JSON.stringify(committee)
+  );
+}
+// ================= SHOW SECTION =================
+function show(id){
+
+  updateCashBox(); // 👈 এই লাইন যোগ করো
+
+  document.querySelectorAll(".section").forEach(sec=>{
+    sec.style.display="none";
+  });
+
+  let box =
+  document.getElementById(id);
+
+  if(box){
+
+    box.style.display="block";
+
+  }
+
+  switch(id){
+
+    case "dashboard":
+      renderDashboard();
+      break;
+
+    case "members":
+      renderMembers();
+      break;
+
+    case "saving":
+      renderSavings();
+      break;
+
+    case "loan":
+      renderLoan();
+      break;
+
+    case "profit":
+      renderProfit();
+      break;
+
+    case "expense":
+      renderExpense();
+      break;
+
+    case "report":
+      renderReport();
+      break;
+
+    case "memberLogs":
+      renderMemberLogs();
+      break;
+
+    case "committee": 
+       renderCommittee();
+       break;
+    
+    case "password":
+      renderPassword();
+      break;
+    case "dueMembers":
+      renderDueMembers();
+      break;
+  }
+}
+
+// ================= PAGE LOAD =================
+document.addEventListener("DOMContentLoaded",()=>{
+
+  updateAdminView();
+
+  let role = localStorage.getItem("role");
+
+  if(role === "member"){
+
+    document.querySelector(".menu").style.display = "none";
+
+    let memberId = localStorage.getItem("memberId");
+
+    viewProfile(memberId);
+
+  }else{
+
+    show("dashboard");
+
+  }
+
+});
+
+// ================= MEMBER LOG =================
+function addMemberLog(action,name){
+
+  memberLogs.push({
+
+    action,
+    name,
+
+    time:
+    new Date().toLocaleString()
+
+  });
+
+  localStorage.setItem(
+    "memberLogs",
+    JSON.stringify(memberLogs)
+  );
+}
+
+// ================= RENDER MEMBER LOG =================
+function renderMemberLogs(){
+
+  let html =
+  "<h3>Member Logs</h3>";
+
+  memberLogs
+  .slice()
+  .reverse()
+  .forEach(log=>{
+
+    html += `
+    <p>
+
+    🕒 ${log.time}
+
+    |
+
+    ${log.action}
+
+    |
+
+    ${log.name}
+
+    </p>
+    `;
+
+  });
+
+  document.getElementById(
+    "memberLogs"
+  ).innerHTML = html;
+}
+
+// ================= QR GENERATE =================
+function generateQR(text,elementId){
+
+  let box =
+  document.getElementById(elementId);
+
+  if(!box) return;
+
+  box.innerHTML = "";
+
+  new QRCode(box,{
+
+    text:String(text),
+
+    width:60,
+    height:60
+
+  });
+}
+
+let scannedMember = null;
+
+// ================= START QR SCAN =================
+function startQRScan(){
+
+  let box =
+  document.getElementById("qrScanner");
+
+  if(!box){
+
+    alert("Scanner পাওয়া যায়নি");
+    return;
+  }
+
+  box.innerHTML = "";
+
+  const scanner =
+  new Html5Qrcode("qrScanner");
+
+  Html5Qrcode
+  .getCameras()
+
+  .then(devices=>{
+
+    if(!devices.length){
+
+      alert("ক্যামেরা পাওয়া যায়নি");
+      return;
+    }
+
+    scanner.start(
+
+      devices[0].id,
+
+      {
+        fps:10,
+        qrbox:200
+      },
+
+      (decodedText)=>{
+
+        scanner.stop();
+
+        let member =
+        members.find(
+          m=>String(m.id)===String(decodedText)
+        );
+
+        if(!member){
+
+          alert("সদস্য পাওয়া যায়নি");
+          return;
+        }
+
+        scannedMember = member;
+
+        alert("✅ সদস্য পাওয়া গেছে: " + member.name);
+
+        }
+      );
+
+    })
+    .catch(err => {
+      console.log(err);
+      alert("ক্যামেরা চালু হয়নি: Permission বা HTTPS সমস্যা");
+    });
+}
+// ===== পাসওয়ার্ড পরিবর্তন রেন্ডার =====
+function renderPassword(){
+  let html = `
+  <h3>পাসওয়ার্ড পরিবর্তন</h3>
+  <input type="password" id="oldpass" placeholder="পুরোনো পাসওয়ার্ড"><br><br>
+  <input type="password" id="newpass" placeholder="নতুন পাসওয়ার্ড"><br><br>
+  <input type="password" id="confirmpass" placeholder="নতুন পাসওয়ার্ড আবার লিখুন"><br><br>
+  <button onclick="changePassword()">পরিবর্তন করুন</button>
+  `;
+  document.getElementById("password").innerHTML = html;
+}
+
+// ===== পাসওয়ার্ড পরিবর্তন ফাংশন =====
+function changePassword(){
+
+  let oldpass =
+  document.getElementById("oldpass").value;
+
+  let newpass =
+  document.getElementById("newpass").value;
+
+  let confirmpass =
+  document.getElementById("confirmpass").value;
+
+  let savedPass =
+  localStorage.getItem("samity_pass")
+  || "anil";
+
+  if(oldpass !== savedPass){
+
+    alert("পুরোনো পাসওয়ার্ড ভুল");
+    return;
+
+  }
+
+  if(newpass !== confirmpass){
+
+    alert("নতুন পাসওয়ার্ড মিলছে না");
+    return;
+
+  }
+
+  localStorage.setItem(
+    "samity_pass",
+    newpass
+  );
+
+  alert("পাসওয়ার্ড সফলভাবে পরিবর্তন হয়েছে");
+
+  show("dashboard");
+}
+
+// ===== Dashboard =====
+function animateValue(el, start, end, duration) {
+  let startTime = null;
+
+  function update(currentTime) {
+    if (!startTime) startTime = currentTime;
+
+    let progress = currentTime - startTime;
+    let percent = Math.min(progress / duration, 1);
+
+    let value = Math.floor(start + (end - start) * percent);
+
+    el.innerText = value;
+
+    if (percent < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+function renderDashboard(){
+
+let now = new Date();
+let currentMonth = now.getMonth();
+let currentYear = now.getFullYear();
+
+let monthNames = [
+"জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন",
+"জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
+];
+
+// ===== YEAR =====
+let yearSaving = savings.reduce((a,b)=>a+(b.amount||0),0);
+let yearLoan = loans.reduce((a,b)=>a+(b.amount||0),0);
+let yearProfit = profits.reduce((a,b)=>a+(b.amount||0),0);
+let yearExpense = expenses.reduce((a,b)=>a+(b.amount||0),0);
+
+let cash = getCash();
+
+// ===== CONFIG =====
+let shouldPay = 15300;
+let maxDueMonthsForCancel = 3;
+
+// ===== RESET =====
+let cancelledMembers = 0;
+let totalDueAmount = 0;
+let dueMembers = 0;
+let cancelText = "";
+
+// ===== MAIN LOOP =====
+members.forEach(m => {
+
+  let totalSaving = savings
+    .filter(s => s.memberId == m.id)
+    .reduce((a,b)=>a + (b.amount || 0),0);
+
+  let due = Math.max(0, shouldPay - totalSaving);
+
+  let dueMonths = Math.ceil(due / 100);
+
+  if(due > 0){
+    dueMembers++;
+    totalDueAmount += due;
+  }
+
+  if(dueMonths >= maxDueMonthsForCancel){
+    cancelledMembers++;
+
+    // 🔴 COLORED CANCEL BADGE (NEW ADD)
+    cancelText += `
+      <span style="
+        display:inline-block;
+        background:#dc2626;
+        color:white;
+        padding:3px 5px;
+        margin:2px;
+        border-radius:5px;
+        font-size:7px;
+        font-weight:bold;
+      ">
+        ⛔ ${m.name} (${dueMonths} মাস, ${due} টাকা)
+      </span>
+    `;
+  }
+});
+
+// ===== MONTH STATS =====
+let savingMembers = new Set(
+  savings.filter(s =>
+    new Date(s.date).getMonth() === currentMonth &&
+    new Date(s.date).getFullYear() === currentYear
+  ).map(s => s.memberId)
+).size;
+
+let loanMembers = new Set(
+  loans.filter(l =>
+    new Date(l.date).getMonth() === currentMonth &&
+    new Date(l.date).getFullYear() === currentYear
+  ).map(l => l.memberId)
+).size;
+
+let profitMembers = new Set(
+  profits.filter(p =>
+    new Date(p.date).getMonth() === currentMonth &&
+    new Date(p.date).getFullYear() === currentYear
+  ).map(p => p.memberId)
+).size;
+
+let savingDue = members.length - savingMembers;
+
+// ===== HTML (NO CHANGE YOUR STRUCTURE) =====
+let html = `
+<h3 style="text-align:center;background:#1e3a8a;color:white;padding:8px;border-radius:10px;">
+📊 ${monthNames[currentMonth]} ${currentYear} Dashboard
+</h3>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px;">
+
+<div class="card">👥 মোট সদস্য<br><b id="m1">0</b>জন</div> 
+<div class="card">💰 মোট সঞ্চয়<br><b id="m2">0</b>টাকা</div>
+<div class="card">🏦 মোট লোন<br><b id="m3">0</b>টাকা</div>
+<div class="card">📈 মোট লাভ<br><b id="m4">0</b>টাকা</div>
+<div class="card">💸 মোট ব্যয়<br><b id="m5">0</b>টাকা</div>
+<div class="card cash">💵 মোট ক্যাশ<br><b id="m6">0</b>টাকা</div>
+
+</div>
+
+<marquee style="background:#0f172a;color:white;padding:3px;border-radius:3px;font-weight:bold;">
+
+🚨 সদস্য বাতিল তালিকা: ${cancelledMembers} জন |
+💰 মোট বকেয়া: ${totalDueAmount} টাকা |
+
+${cancelText || "<span style='color:#22c55e;'>✅ কোনো বাতিল সদস্য নেই</span>"} |
+
+👥 মোট সদস্য: ${members.length} জন |
+💰 এ মাসে সঞ্চয় দিয়েছে: ${savingMembers} |
+🏦 এ মাসে লোন নিয়েছে: ${loanMembers} |
+📈 এ মাসে লাভ দিয়েছে: ${profitMembers} |
+❌ মোট বকেয়া: ${savingDue}  জন | 
+💵 লোন,বাদে,মোট ক্যাশ: ${cash} টাকা |
+
+📍 পিরোপুর,মধুপুর টাঙ্গাইল ✔
+
+</marquee>
+
+<div style="margin-top:8px;">
+<input id="dashboardSearch"
+placeholder="Search  সদস্য ID / নাম"
+style="width:100%;padding:10px;border-radius:8px;"
+oninput="liveSearchDashboardMember()">
+</div>
+
+<div id="dashboardProfile"></div>
+`;
+
+document.getElementById("dashboardContent").innerHTML = html;
+
+// ===== ANIMATION FIX =====
+setTimeout(() => {
+
+if(typeof animateValue !== "function") return;
+
+animateValue(document.getElementById("m1"),0,members.length,500);
+animateValue(document.getElementById("m2"),0,yearSaving,600);
+animateValue(document.getElementById("m3"),0,yearLoan,600);
+animateValue(document.getElementById("m4"),0,yearProfit,600);
+animateValue(document.getElementById("m5"),0,yearExpense,600);
+animateValue(document.getElementById("m6"),0,cash,700);
+
+},100);
+
+}
+function getCash(){
+  let totalSaving = savings.reduce((a,b)=>a + (b.amount || 0), 0);
+  let totalProfit = profits.reduce((a,b)=>a + (b.amount || 0), 0);
+  let totalExpense = expenses.reduce((a,b)=>a + (b.amount || 0), 0);
+  let totalLoanGiven = loans.reduce((a,b)=>a + (b.amount || 0), 0);
+
+  let totalLoanRepayment = loans
+    .flatMap(l => l.payments || [])
+    .reduce((a,b)=>a + (b.amount || 0), 0);
+
+  return totalSaving + totalProfit + totalLoanRepayment - totalExpense - totalLoanGiven;
+}
+function updateCashBox(){
+  let box = document.getElementById("cashBox");
+  if(box){
+    box.innerHTML = "💵 মোট ক্যাশ: " + getCash();
+  }
+}
+function verifyTransaction(){
+
+if(!isAdmin()){
+alert("❌ শুধুমাত্র Admin লেনদেন করতে পারবে");
+return false;
+}
+
+return true;
+}
+
+function dashboardDeposit(memberId){
+
+if(!verifyTransaction()) return;
+
+let amount = Number(
+document.getElementById("saveAmount").value
+);
+
+if(amount <= 0){
+alert("টাকার পরিমাণ দিন");
+return;
+}
+
+savings.push({
+memberId: memberId,
+amount: amount,
+date: new Date().toISOString()
+});
+
+save();
+renderMembers();
+renderDashboard();
+liveSearchDashboardMember();
+
+alert("✅ সঞ্চয় জমা হয়েছে");
+}
+
+function dashboardWithdraw(memberId){
+
+if(!verifyTransaction()) return;
+
+let amount = Number(
+document.getElementById("saveAmount").value
+);
+
+if(amount <= 0){
+alert("টাকার পরিমাণ দিন");
+return;
+}
+
+let balance = savings
+.filter(s => s.memberId == memberId)
+.reduce((a,b)=>a+(b.amount||0),0);
+
+if(amount > balance){
+alert("❌ পর্যাপ্ত ব্যালেন্স নেই");
+return;
+}
+
+savings.push({
+memberId: memberId,
+amount: -amount,
+date: new Date().toISOString()
+});
+
+save();
+renderMembers();
+renderDashboard();
+liveSearchDashboardMember();
+
+alert("✅ উত্তোলন সম্পন্ন");
+}
+
+function liveSearchDashboardMember(){
+
+let key = document.getElementById("dashboardSearch")
+.value.trim().toLowerCase();
+
+if(!key){
+document.getElementById("dashboardProfile").innerHTML = "";
+return;
+}
+
+let member = members.find(m =>
+String(m.id) === key ||
+(m.name || "").toLowerCase().includes(key) ||
+(m.mobile || "").includes(key)
+);
+
+if(!member){
+document.getElementById("dashboardProfile").innerHTML =
+"<div style='color:red;font-weight:bold'>❌ সদস্য পাওয়া যায়নি</div>";
+return;
+}
+
+let memberSavings =
+savings.filter(s => s.memberId == member.id);
+
+let totalDeposit = memberSavings
+.filter(s => (s.amount || 0) > 0)
+.reduce((a,b)=>a+(b.amount||0),0);
+
+let totalWithdraw = memberSavings
+.filter(s => (s.amount || 0) < 0)
+.reduce((a,b)=>a+Math.abs(b.amount||0),0);
+
+let balance = totalDeposit - totalWithdraw;
+
+let html = `
+
+  <div style="background:#fff;padding:15px;border-radius:10px;">  <h3>${member.name}</h3><b>ID:</b> ${member.id}<br>
+<b>মোবাইল:</b> ${member.mobile}<br>
+
+  <hr>💰 মোট জমা: ${totalDeposit} টাকা<br>
+💸 মোট উত্তোলন: ${totalWithdraw} টাকা<br>
+🏦 বর্তমান ব্যালেন্স: ${balance} টাকা<br>
+
+  <hr><input
+id="saveAmount"
+type="number"
+placeholder="টাকার পরিমাণ"
+style="width:100%;padding:10px;">
+
+<br><br>
+
+<button
+onclick="dashboardDeposit(${member.id})">
+💰 জমা
+</button>
+
+<button
+onclick="dashboardWithdraw(${member.id})">
+💸 উত্তোলন
+</button>
+
+  </div>
+  `;document.getElementById("dashboardProfile").innerHTML = html;
+}
+// ===== Dashboard লাইভ সার্চ =====
+function liveSearchDashboardMember(){
+
+let key = document.getElementById("dashboardSearch")
+.value.trim().toLowerCase();
+
+if(!key){
+document.getElementById("dashboardProfile").innerHTML = "";
+return;
+}
+
+let member = members.find(m =>
+m.id.toString() === key ||
+(m.name || "").toLowerCase().includes(key) ||
+(m.mobile || "").includes(key)
+);
+
+if(!member){
+
+document.getElementById("dashboardProfile").innerHTML =
+"<h3 style='color:red'>❌ সদস্য পাওয়া যায়নি</h3>";
+
+return;
+}
+
+// ===== Saving =====
+let memberSavings =
+savings.filter(s => s.memberId == member.id);
+
+let totalDeposit = memberSavings
+.filter(s => (s.amount || 0) > 0)
+.reduce((a,b)=>a+(b.amount||0),0);
+
+let totalWithdraw = memberSavings
+.filter(s => (s.amount || 0) < 0)
+.reduce((a,b)=>a+Math.abs(b.amount||0),0);
+
+let balance = totalDeposit - totalWithdraw;
+
+// ===== Status =====
+let statusText = "✅ সক্রিয় সদস্য";
+let statusColor = "#16a34a";
+
+if(balance < 24300){
+statusText = "⛔ বকেয়া সদস্য";
+statusColor = "#dc2626";
+}
+
+let html = `
+
+<div style="
+background:white;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+"><center><img src="${member.photo || 'https://via.placeholder.com/120'}"
+style="
+width:120px;
+height:120px;
+border-radius:50%;
+border:3px solid #1e3a8a;
+object-fit:cover;
+">
+
+<h2>${member.name}</h2><div style="
+background:${statusColor};
+color:white;
+padding:6px 12px;
+border-radius:20px;
+display:inline-block;
+font-weight:bold;
+">
+${statusText}
+</div></center><hr><b>🆔 সদস্য ID:</b> ${member.id}<br>
+<b>👨 পিতার নাম:</b> ${member.father || "-"}<br>
+<b>🪪 NID:</b> ${member.nid || "-"}<br>
+<b>🏠 ঠিকানা:</b> ${member.addr || "-"}<br>
+<b>📱 মোবাইল:</b> ${member.mobile || "-"}<br>
+<b>📅 যোগদানের তারিখ:</b> ${member.date || "-"}<br>
+
+<hr><div style="color:green;font-weight:bold;">
+💰 মোট জমা: ${totalDeposit} টাকা
+</div><div style="color:red;font-weight:bold;">
+💸 মোট উত্তোলন: ${totalWithdraw} টাকা
+</div><div style="color:#2563eb;font-weight:bold;">
+🏦 বর্তমান ব্যালেন্স: ${balance} টাকা
+</div><div style="color:#9333ea;font-weight:bold;">
+
+</div><hr><input
+id="saveAmount"
+type="number"
+placeholder="টাকার পরিমাণ"
+style="
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+">
+
+<br><br>
+
+<button
+onclick="dashboardDeposit(${member.id})"
+style="
+background:#16a34a;
+color:white;
+padding:10px;
+border:none;
+border-radius:8px;
+margin-right:5px;
+">
+💰 জমা
+</button>
+
+<button
+onclick="dashboardWithdraw(${member.id})"
+style="
+background:#dc2626;
+color:white;
+padding:10px;
+border:none;
+border-radius:8px;
+">
+💸 উত্তোলন
+</button>
+
+</div>
+`;document.getElementById("dashboardProfile").innerHTML = html;
+}
+
+function dashboardDeposit(memberId){
+
+let amount = Number(
+document.getElementById("saveAmount").value
+);
+
+if(amount <= 0){
+alert("টাকার পরিমাণ দিন");
+return;
+}
+
+savings.push({
+memberId: memberId,
+amount: amount,
+date: new Date().toISOString()
+});
+
+save();
+
+renderDashboard();
+renderMembers();
+
+liveSearchDashboardMember();
+
+alert("✅ সঞ্চয় জমা হয়েছে");
+}
+
+function dashboardWithdraw(memberId){
+
+let amount = Number(
+document.getElementById("saveAmount").value
+);
+
+if(amount <= 0){
+alert("টাকার পরিমাণ দিন");
+return;
+}
+
+savings.push({
+memberId: memberId,
+amount: -amount,
+date: new Date().toISOString()
+});
+
+save();
+
+renderDashboard();
+renderMembers();
+
+liveSearchDashboardMember();
+
+alert("✅ উত্তোলন সম্পন্ন");
+}
+
+// ===== Image Compress (Safe) =====
+function compressImage(file, callback){
+  let reader = new FileReader();
+
+  reader.onload = function(e){
+    let img = new Image();
+    img.src = e.target.result;
+
+    img.onload = function(){
+      let canvas = document.createElement("canvas");
+      let ctx = canvas.getContext("2d");
+
+      let maxWidth = 100;
+      let scale = maxWidth / img.width;
+
+      canvas.width = maxWidth;
+      canvas.height = img.height * scale;
+
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      let compressed = canvas.toDataURL("image/jpeg", 0.6);
+      callback(compressed);
+    }
+  };
+
+  reader.readAsDataURL(file);
+}
+function renderDueMembers(){
+
+  let html = `
+  <h3>❌ বকেয়া সদস্য তালিকা</h3>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>নাম</th>
+      <th>মোবাইল</th>
+      <th>বকেয়া টাকা</th>
+      <th>স্ট্যাটাস</th>
+    </tr>
+  `;
+
+  members.forEach(m => {
+
+    let paid = savings.some(s =>
+      s.memberId == m.id &&
+      new Date(s.date).getMonth() == new Date().getMonth() &&
+      new Date(s.date).getFullYear() == new Date().getFullYear()
+    );
+
+    if(!paid){
+
+      html += `
+      <tr>
+    <td>${m.id}</td>
+<td>${m.name}</td>
+<td>${m.mobile}</td>
+<td style="color:red">বকেয়া</td>
+      </tr>
+      `;
+    }
+
+  });
+
+  html += `</table>`;
+
+  document.getElementById("dueMembers").innerHTML = html;
+}
+// ===== কার্যকরী কমিটি =====
+function renderCommittee(){
+
+let html = `
+<h3>বতমান কার্যকরী কমিটির তালিকা 2026/2028 ইং সাল প্রযন্ত</h3>
+`;
+
+if(isAdmin()){
+
+html += `
+
+<input id="cname" placeholder="নাম">
+<input id="caddress" placeholder="ঠিকানা">
+<input id="cpost" placeholder="পদবি">
+<input id="cmobile" type="number" placeholder="মোবাইল">
+<input type="file" id="cphoto">
+
+<button onclick="addCommittee()">
+যোগ করুন
+</button>
+
+`;
+
+}
+
+html += `
+
+<div class="table-container">
+
+<table>
+
+<tr>
+<th>ছবি</th>
+<th>নাম</th>
+<th>ঠিকানা</th>
+<th>পদবি</th>
+<th>মোবাইল</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+
+`;
+
+committee.forEach((c,i)=>{
+
+html += `
+
+<tr>
+
+<td>
+<img src="${c.photo || 'https://via.placeholder.com/50'}">
+</td>
+
+<td>${c.name}</td>
+<td>${c.address}</td>
+<td style="color:#22c55e;font-weight:bold">
+${c.post}
+</td>
+
+<td>${c.mobile}</td>
+
+<td>
+
+${isAdmin()
+
+? `
+<button onclick="editCommittee(${i})">
+Edit
+</button>
+`
+
+: "🔒"
+
+}
+
+</td>
+
+<td>
+
+${isAdmin()
+
+? `
+<button onclick="deleteCommittee(${i})"
+style="background:red;">
+X
+</button>
+`
+
+: "🔒"
+
+}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+html += `
+
+</table>
+</div>
+
+`;
+
+document.getElementById("committee").innerHTML = html;
+
+}
+
+function addCommittee(){
+
+let name = document.getElementById("cname").value.trim();
+let address = document.getElementById("caddress").value.trim();
+let post = document.getElementById("cpost").value.trim();
+let mobile = document.getElementById("cmobile").value.trim();
+
+if(!name || !post){
+  alert("নাম এবং পদবি দিন");
+  return;
+}
+
+let file =
+document.getElementById("cphoto").files[0];
+
+function saveCommittee(photo){
+
+committee.push({
+  name,
+  address,
+  post,
+  mobile,
+  photo
+});
+
+save();
+renderCommittee();
+
+alert("কমিটির সদস্য যোগ হয়েছে");
+}
+
+if(file){
+
+compressImage(file, saveCommittee);
+
+}else{
+
+saveCommittee("");
+
+}
+}
+function editCommittee(i){
+
+let c = committee[i];
+
+let name = prompt("নাম", c.name);
+if(!name) return;
+
+let address = prompt("ঠিকানা", c.name);
+if(!address) return;
+
+let post = prompt("পদবি", c.post);
+if(!post) return;
+
+let mobile = prompt("মোবাইল", c.mobile);
+
+committee[i] = {
+  ...c,
+  name,
+  address,
+  post,
+  mobile
+};
+
+save();
+renderCommittee();
+
+alert("আপডেট হয়েছে");
+}
+function deleteCommittee(i){
+
+if(!checkPassword()) return;
+
+let ok = confirm("ডিলিট করবেন?");
+if(!ok) return;
+
+committee.splice(i,1);
+
+save();
+renderCommittee();
+
+alert("ডিলিট হয়েছে");
+}
+
+function resetAllData(){
+
+  if(!isAdmin()){
+    alert("শুধুমাত্র Admin এই কাজ করতে পারবে");
+    return;
+  }
+
+  if(!checkPassword()) return;
+
+  if(!confirm("সকল ডাটা স্থায়ীভাবে ডিলিট করবেন?")){
+    return;
+  }
+
+  // Array খালি
+  members = [];
+  savings = [];
+  loans = [];
+  profits = [];
+  expenses = [];
+  committee = [];
+  memberLogs = [];
+
+  // LocalStorage খালি
+  localStorage.removeItem("members");
+  localStorage.removeItem("savings");
+  localStorage.removeItem("loans");
+  localStorage.removeItem("profits");
+  localStorage.removeItem("expenses");
+  localStorage.removeItem("committee");
+  localStorage.removeItem("memberLogs");
+
+  // Login তথ্য
+  localStorage.removeItem("role");
+  localStorage.removeItem("secureToken");
+
+  alert("✅ সকল ডাটা ডিলিট হয়েছে");
+
+  location.reload();
+}
+// ===== Render Members =====
+function renderMembers(){
+
+  let html = "";
+
+// সদস্য তালিকা
+let memberList = members.map(m => {
+
+  let totalDeposit = savings
+    .filter(s => s.memberId == m.id && (s.amount || 0) > 0)
+    .reduce((a,b) => a + (b.amount || 0), 0);
+
+  let totalWithdraw = savings
+    .filter(s => s.memberId == m.id && (s.amount || 0) < 0)
+    .reduce((a,b) => a + Math.abs(b.amount || 0), 0);
+
+  let balance = totalDeposit - totalWithdraw;
+
+  let status = balance >= 15300
+    ? "<span style='color:#22c55e;font-weight:bold;'>🟢 সক্রিয়</span>"
+    : "<span style='color:#ef4444;font-weight:bold;'>🔴 বকেয়া</span>";
+
+  return `
+  <span style="
+    display:inline-block;
+    background:#ffffff;
+    color:#111827;
+    padding:1px 2px;
+    margin:0 3px;
+    border-radius:1px;
+    border:1px solid #2563eb;
+    font-weight:bold;
+    white-space:nowrap;
+  ">
+    <span style="color:#f59e0b;">আইডি ${m.id}</span> |
+    <span style="color:#2563eb;">👤নাম: ${m.name}</span> |
+    <span style="color:#16a34a;">💰মোট,জমা :${totalDeposit} টাকা</span> |
+    <span style="color:#dc2626;">💸উত্তলোন: ${totalWithdraw} টাকা</span> |
+    <span style="color:#9333ea;">🏦মোট,স্থিতি: ${balance} টাকা</span> |
+    ${status}
+  </span>
+  `;
+
+}).join(" ");
+// ===== বকেয়া তালিকা =====
+let dueText = "";
+
+members.forEach(m=>{
+
+  let shouldPay = 15300;
+
+  let paid = savings
+    .filter(s => s.memberId == m.id)
+    .reduce((a,b) => a + (b.amount || 0), 0);
+
+  let due = Math.max(0, shouldPay - paid);
+
+  if(due > 0){
+    let dueMonths = Math.ceil(due / 100);
+    dueText += `🔴বকেয়া,তালিকা নাম: ${m.name} (${dueMonths} মাস, ${due} টাকা বকেয়া) | `;
+  }
+
+});
+  // ===== MARQUEE =====
+  html += `
+  <marquee
+    scrollamount="4"
+    style="
+      background:#dc2626;
+      color:white;
+      padding:5px;
+      border-radius:5px;
+      margin-bottom:10px;
+      font-weight:bold;
+    ">
+    👥 বর্তমান মোট সদস্য সংখ্যা: ${members.length} জন ||
+    ${dueText || "✅ কোনো সদস্যের সঞ্চয় বকেয়া নেই"} ||
+👤 সদস্য তালিকা: ${memberList} ||
+    💰 বর্তমান লোন,বাদে মোট ক্যাশ: ${getCash()} টাকা ||
+  </marquee>
+  `;
+// ===== ONLY ADMIN CAN SEE ADD MEMBER =====
+if(isAdmin()){
+
+html += `
+
+<h3>নতুন সদস্য যোগ</h3>
+
+<input id="mid" type="number" placeholder="ID">
+<input id="mname" placeholder="নাম">
+<input id="mfather" placeholder="পিতার নাম">
+<input id="mnid" type="number" placeholder="NID">
+<input id="maddr" placeholder="ঠিকানা">
+<input id="mmobile" type="number" placeholder="মোবাইল">
+<input type="date" id="mdate">
+<input type="file" id="mphoto">
+
+<button onclick="addMember()">যোগ</button>
+
+<button onclick="sendMemberInfoSMS()" style="background:#22c55e;">
+সদস্য SMS
+</button>
+
+`;
+
+}
+
+html += `
+
+  <h3>সদস্য তালিকা দেখুন</h3>
+  <input id="searchMember" placeholder="সার্চ" oninput="renderMembers()">
+
+  <div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>সদস্য,ID</th>
+        <th>ছবি</th>
+        <th>নাম</th>
+        <th>পিতার,নাম</th>
+        <th>NID</th>
+        <th>ঠিকানা</th>
+        <th>মোবাইল</th>
+        <th>মোট,সঞ্চয়</th>
+        <th>QR,কোড</th>
+        <th>সংশোধন</th>
+        <th>ডিলিট</th>
+      </tr>
+    </thead>
+    <tbody>
+  `;
+
+  let key = document.getElementById("searchMember")?.value?.toLowerCase() || "";
+
+  members.forEach((m,i)=>{
+
+  if(
+    (m.name||"").toLowerCase().includes(key) ||
+    (m.id+"").includes(key)
+  ){
+
+    let totalSaving = savings
+      .filter(s=>s.memberId==m.id)
+      .reduce((a,b)=>a+b.amount,0);
+// ===== বকেয়া হিসাব =====
+let shouldPay = 15300;
+
+let due = Math.max(0, shouldPay - totalSaving);
+
+let dueMonths = Math.ceil(due / 100);
+
+if(due > 0){
+  dueText += `🔴 ${m.name} (${dueMonths} মাস, ${due} টাকা) | `;
+}
+    html += `
+<tr>
+<td>${m.id}</td>
+
+<td>
+<img src="${m.photo || 'https://via.placeholder.com/40'}">
+</td>
+
+<td onclick="viewProfile(${m.id})"
+style="cursor:pointer;color:#22c55e">
+${m.name}
+</td>
+
+<td>${m.father || '-'}</td>
+<td>${m.nid || '-'}</td>
+<td>${m.addr || '-'}</td>
+<td>${m.mobile}</td>
+<td>${totalSaving}</td>
+
+<td><div id="qr_${i}"></div></td>
+
+${isAdmin()
+? `
+<td>
+<button onclick="editMember(${i})">
+Edit
+</button>
+</td>
+
+<td>
+<button onclick="deleteMember(${i})"
+style="background:red;">
+X
+</button>
+</td>
+`
+:
+`
+<td>🔒</td>
+<td>🔒</td>
+`
+}
+
+</tr>
+`;
+  }
+
+}); // ✅ forEach এখানে শেষ হবে
+
+html += `</tbody></table></div>`;
+
+document.getElementById("members").innerHTML = html;
+
+// 🔥 QR generate after render
+setTimeout(()=>{
+  members.forEach((m,i)=>{
+    if(document.getElementById("qr_"+i)){
+      generateQR(m.id, "qr_"+i);
+    }
+  });
+},200);
+
+} // ✅ renderMembers() শেষ
+// ===== Add Member =====
+function addMember(){
+
+  if(!isAdmin()){
+    alert("❌ শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+
+  let id =
+  Number(
+    document.getElementById("mid").value
+  );
+
+  let name =
+  document.getElementById("mname").value.trim();
+
+  if(!id || !name){
+
+    alert("ID এবং নাম দিন");
+    return;
+
+  }
+
+  if(members.some(m=>m.id==id)){
+
+    alert("এই ID আগে থেকেই আছে");
+    return;
+
+  }
+
+  let file =
+  document.getElementById("mphoto").files[0];
+
+  function saveMember(photo){
+
+    members.push({
+   
+      id,
+      name,
+
+      father:
+      document.getElementById("mfather").value.trim(),
+
+      nid:
+      document.getElementById("mnid").value.trim(),
+
+      addr:
+      document.getElementById("maddr").value.trim(),
+
+      mobile:
+      document.getElementById("mmobile").value.trim(),
+
+      date:
+      document.getElementById("mdate").value,
+
+      photo:
+      photo || 'https://via.placeholder.com/40'
+
+    });
+    
+   addMemberLog("ADD", name);
+
+    save();
+
+    renderMembers();
+
+    renderDashboard();
+
+    alert("সদস্য যোগ হয়েছে");
+
+  }
+
+  if(file){
+
+    compressImage(file, saveMember);
+
+  }else{
+
+    saveMember('');
+
+  }
+}
+// ===== Edit =====
+function editMember(i){
+
+  if(!isAdmin()){
+    alert("শুধুমাত্র Admin Edit করতে পারবে");
+    return;
+  }
+
+  let m = members[i];
+
+  let name = prompt("নাম", m.name);
+  if(!name) return;
+
+  let father = prompt("পিতার নাম", m.father || "");
+  let mobile = prompt("মোবাইল", m.mobile);
+  let addr = prompt("ঠিকানা", m.addr);
+  let nid = prompt("NID", m.nid);
+
+  members[i] = {
+    ...m,
+    name,
+    father,
+    mobile,
+    addr,
+    nid
+  };
+
+  save();
+  renderMembers();
+  renderDashboard();
+  updateCashBox();
+  alert("আপডেট হয়েছে");
+}
+// ===== Delete Member =====
+function deleteMember(i){
+
+  if(!isAdmin()){
+    alert("শুধুমাত্র Admin delete করতে পারবে");
+    return;
+  }
+
+  if(i < 0 || i >= members.length){
+    alert("সদস্য পাওয়া যায়নি");
+    return;
+  }
+
+  let memberName = members[i].name;
+
+  if(!confirm(memberName + " কে ডিলিট করবেন?")){
+    return;
+  }
+
+  members.splice(i,1);
+
+  save();
+
+  renderMembers();
+  renderDashboard();
+  updateCashBox();
+  alert("সদস্য ডিলিট হয়েছে");
+}
+// ===== Member Profile =====
+function viewProfile(memberId){
+
+  let m = members.find(x=>x.id==memberId);
+  if(!m) return alert("সদস্য পাওয়া যায়নি");
+
+  let memberSavings = savings.filter(s=>s.memberId==memberId);
+
+  let totalDeposit = memberSavings
+    .filter(s=>s.amount > 0)
+    .reduce((a,b)=>a+b.amount,0);
+
+  let totalWithdraw = memberSavings
+    .filter(s=>s.amount < 0)
+    .reduce((a,b)=>a+Math.abs(b.amount),0);
+
+  let balance = totalDeposit - totalWithdraw;
+
+  // 🔥 QR FULL DATA
+  let profileData = JSON.stringify({
+    id: m.id,
+    name: m.name,
+    nid: m.nid,
+    address: m.addr,
+    mobile: m.mobile,
+    joinDate: m.date,
+    totalDeposit: totalDeposit,
+    totalWithdraw: totalWithdraw,
+    balance: balance
+  });
+
+  let html = `
+    <h3>সদস্য প্রোফাইল</h3>
+
+    <img src="${m.photo}" style="width:80px;height:80px;border-radius:50%"><br><br>
+
+    <div id="qr_profile"></div><br>
+
+    <b> আই,ডি:</b> ${m.id}<br>
+    <b>নাম:</b> ${m.name}<br>
+    <b>পিতার নাম:</b> ${m.father || '-'}<br>
+    <b>NID:</b> ${m.nid || '-'}<br>
+    <b>ঠিকানা:</b> ${m.addr || '-'}<br>
+    <b>মোবাইল:</b> ${m.mobile || '-'}<br>
+    <b>যোগদানের তারিখ:</b> ${m.date || '-'}<br>
+
+    <hr>
+
+    <h4 style="color:green">মোট জমা: ${totalDeposit} টাকা</h4>
+    <h4 style="color:red">মোট উত্তোলন: ${totalWithdraw} টাকা</h4>
+    <h4 style="color:#22c55e">ব্যালেন্স: ${balance} টাকা</h4>
+  `;
+
+  document.getElementById("profile").innerHTML = html;
+  show("profile");
+
+  setTimeout(()=>{
+    generateQR(profileData, "qr_profile");
+  },200);
+}
+
+// ===== সঞ্চয় =====
+function renderSavings() {
+
+  let months = [
+    "জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন",
+    "জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
+  ];
+
+  // ===== START HTML =====
+  let html = `<h3>ফাইনাল সঞ্চয় সিট</h3>`;
+
+  // ===== ONLY ADMIN =====
+  if(isAdmin()){
+
+    html += `
+
+    <input id="sname"
+    placeholder="সদস্যের ID বা নাম">
+
+    <input id="samount"
+    type="number"
+    placeholder="টাকা">
+
+    <input type="date"
+    id="sdate">
+
+    <button onclick="addSaving()">
+    জমা
+    </button>
+
+    <br><br>
+
+    <!-- Withdraw -->
+
+    <input id="wid"
+    placeholder="উত্তোলনের জন্য সদস্য ID">
+
+    <input id="wamount"
+    type="number"
+    placeholder="টাকা">
+
+    <button onclick="withdrawById()"
+    style="background:#dc2626;color:white;">
+
+    উত্তোলন
+
+    </button>
+
+    `;
+
+  }
+
+  // ===== TABLE START =====
+  html += `
+
+  <div class="table-container">
+
+  <table border="1">
+
+    <tr>
+
+      <th>ID</th>
+      <th>ছবি</th>
+      <th>নাম</th>
+
+  `;
+
+  months.forEach(m => {
+
+    html += `<th>${m}</th>`;
+
+  });
+
+  html += `
+
+      <th>মোট জমা</th>
+      <th>মোট উত্তোলন</th>
+      <th>ফাইনাল ব্যালেন্স</th>
+      <th>বাকি</th>
+      <th>উত্তোলন</th>
+      <th>ডিলিট</th>
+
+    </tr>
+
+  `;
+
+  let now = new Date();
+
+  let currentMonth = now.getMonth();
+
+  let currentYear = now.getFullYear();
+
+  // ===== MEMBER LOOP =====
+  members.forEach(member => {
+
+    html += `
+
+    <tr>
+
+      <td>${member.id}</td>
+
+      <td>
+      <img src="${member.photo || 'https://via.placeholder.com/40'}">
+      </td>
+
+      <td>${member.name}</td>
+
+    `;
+
+    let totalDeposit = 0;
+
+    let totalWithdraw = 0;
+
+    let totalBalance = 0;
+
+    let monthly = Array(12).fill(0);
+
+    savings
+    .filter(
+      s =>
+      s.memberId == member.id &&
+      new Date(s.date).getFullYear() == currentYear
+    )
+
+    .forEach(s => {
+
+      let m = new Date(s.date).getMonth();
+
+      if(s.amount > 0){
+
+        monthly[m] += s.amount;
+
+        totalDeposit += s.amount;
+
+      }else{
+
+        totalWithdraw += Math.abs(s.amount);
+
+      }
+
+      totalBalance += s.amount;
+
+    });
+
+    // ===== MONTH CELL =====
+    months.forEach((_,i)=>{
+
+      let val = monthly[i];
+
+      if(i <= currentMonth){
+
+        html += val > 0
+
+        ? `<td style="color:green">${val}</td>`
+
+        : `<td style="color:red">বাকি</td>`;
+
+      }else{
+
+        html += `<td></td>`;
+
+      }
+
+    });
+
+    let totalExpected =
+    100 * (currentMonth + 1);
+
+    let remaining =
+    Math.max(totalExpected - totalDeposit, 0);
+
+    html += `
+
+      <td style="color:green;font-weight:bold">
+      ${totalDeposit}
+      </td>
+
+      <td style="color:red;font-weight:bold">
+      ${totalWithdraw}
+      </td>
+
+      <td style="color:#22c55e;font-weight:bold">
+      ${totalBalance}
+      </td>
+
+      <td style="color:red;font-weight:bold">
+      ${remaining}
+      </td>
+
+    `;
+
+    // ===== ONLY ADMIN BUTTON =====
+    if(isAdmin()){
+
+      html += `
+
+      <td>
+
+        <button
+        onclick="withdrawSaving('${member.id}')"
+        style="background:#dc2626;">
+
+        ক্লিক
+
+        </button>
+
+      </td>
+
+      <td>
+
+        <button
+        onclick="delSavingMember('${member.id}')">
+
+        X
+
+        </button>
+
+      </td>
+
+      `;
+
+    }else{
+
+      html += `
+
+      <td>🔒</td>
+
+      <td>🔒</td>
+
+      `;
+
+    }
+
+    html += `</tr>`;
+
+  });
+
+  html += `
+
+  </table>
+
+  </div>
+
+  `;
+
+  document.getElementById("saving").innerHTML = html;
+
+}
+
+// ===== Add Saving =====
+function addSaving(){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+  let input = document.getElementById("sname").value.trim();
+  let amount = Number(document.getElementById("samount").value);
+  let date = document.getElementById("sdate").value;
+
+  if(!input || !amount || !date){ 
+    alert("নাম/ID, টাকা এবং তারিখ দিতে হবে"); 
+    return; 
+  }
+
+  let member = members.find(m => 
+    m.id == input || 
+    m.name.toLowerCase() == input.toLowerCase()
+  );
+
+  if(!member){ 
+    alert("সদস্য পাওয়া যায়নি"); 
+    return; 
+  }
+
+  let month = new Date(date).getMonth();
+  let year = new Date(date).getFullYear();
+
+  let already = savings.find(s =>
+    s.memberId == member.id &&
+    new Date(s.date).getMonth() == month &&
+    new Date(s.date).getFullYear() == year &&
+    s.amount > 0
+  );
+
+  if(already){
+    alert("এই মাসের সঞ্চয় ইতিমধ্যে দেওয়া হয়েছে");
+    return;
+  }
+
+  savings.push({
+    memberId: member.id,
+    name: member.name,
+    amount: amount,
+    date: date
+  });
+
+  save();
+  renderSavings();
+  renderDashboard();
+
+  alert("সঞ্চয় সফলভাবে জমা হয়েছে");
+
+  document.getElementById("sname").value="";
+  document.getElementById("samount").value="";
+  document.getElementById("sdate").value="";
+}
+
+// ===== Withdraw by ID =====
+function withdrawById(){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+  if(!checkPassword()) return;
+
+  let id = document.getElementById("wid").value.trim();
+  let amount = Number(document.getElementById("wamount").value);
+
+  if(!id || !amount){
+    alert("ID এবং টাকা দিন");
+    return;
+  }
+
+  let member = members.find(m => m.id == id);
+
+  if(!member){
+    alert("সদস্য পাওয়া যায়নি");
+    return;
+  }
+
+  let total = savings
+    .filter(s => s.memberId == id)
+    .reduce((a,b)=>a+b.amount,0);
+
+  if(amount <= 0){
+    alert("সঠিক টাকা দিন");
+    return;
+  }
+
+  if(amount > total){
+    alert("পর্যাপ্ত টাকা নেই");
+    return;
+  }
+
+  savings.push({
+    memberId: member.id,
+    name: member.name,
+    amount: -amount,
+    date: new Date().toISOString().split('T')[0]
+  });
+
+  save();
+  renderSavings();
+  renderDashboard();
+
+  alert("উত্তোলন সম্পন্ন");
+
+  document.getElementById("wid").value="";
+  document.getElementById("wamount").value="";
+}
+
+// ===== Withdraw Button =====
+function withdrawSaving(memberId){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+  if(!checkPassword()) return;
+
+  let member = members.find(m => m.id == memberId);
+
+  let total = savings
+    .filter(s => s.memberId == memberId)
+    .reduce((a,b)=>a+b.amount,0);
+
+  let amount = prompt(`মোট আছে: ${total} টাকা\nকত তুলবেন?`);
+
+  if(!amount) return;
+
+  amount = Number(amount);
+
+  if(amount <= 0){
+    alert("সঠিক টাকা দিন");
+    return;
+  }
+
+  if(amount > total){
+    alert("পর্যাপ্ত টাকা নেই");
+    return;
+  }
+
+  savings.push({
+    memberId: member.id,
+    name: member.name,
+    amount: -amount,
+    date: new Date().toLocaleDateString('en-CA')
+});
+  save();
+  renderSavings();
+  renderDashboard();
+
+  alert("উত্তোলন সম্পন্ন");
+}
+
+// ===== Delete Single Member Saving =====
+function delSavingMember(memberId){
+
+  if(!isAdmin()){
+    alert("❌ শুধুমাত্র Admin ডিলিট করতে পারবে");
+    return;
+  }
+
+  if(!checkPassword()) return;
+
+  let member = members.find(m => m.id == memberId);
+
+  if(!member){
+    alert("সদস্য পাওয়া যায়নি");
+    return;
+  }
+
+  let ok = confirm(
+    `${member.name} এর সব সঞ্চয় ডিলিট করবেন?`
+  );
+
+  if(!ok) return;
+
+  // ===== Delete Only This Member Savings =====
+  savings = savings.filter(
+    s => String(s.memberId) !== String(memberId)
+  );
+
+  // ===== Save =====
+  localStorage.setItem(
+    "savings",
+    JSON.stringify(savings)
+  );
+
+  // ===== Refresh =====
+  renderSavings();
+  renderDashboard();
+
+  alert("✅ সদস্যের সব সঞ্চয় ডিলিট হয়েছে");
+}
+// ===== SMART MEMBER SMS =====
+function sendMemberInfoSMS(){
+
+  let meetingDate = prompt("মিটিং এর তারিখ লিখুন");
+
+  if(!meetingDate) return;
+
+  let smsList = [];
+
+  members.forEach(member=>{
+
+    let memberSavings = savings.filter(
+      s => s.memberId == member.id
+    );
+
+    let totalDeposit = memberSavings
+      .filter(s=>s.amount>0)
+      .reduce((a,b)=>a+b.amount,0);
+
+    let totalWithdraw = memberSavings
+      .filter(s=>s.amount<0)
+      .reduce((a,b)=>a+Math.abs(b.amount),0);
+
+    let balance = totalDeposit - totalWithdraw;
+
+    // ===== বাকি হিসাব =====
+    let now = new Date();
+    let expected = (now.getMonth()+1) * 100;
+
+    let due = expected - totalDeposit;
+    if(due < 0) due = 0;
+
+    let msg =
+`গাভী পালন,সমবায়,সমিতি,লিঃ
+সদস্য: ${member.name}
+ID: ${member.id}
+
+মোট সঞ্চয়: ${totalDeposit} টাকা
+মোট উত্তোলন: ${totalWithdraw} টাকা
+বর্তমান ব্যালেন্স: ${balance} টাকা
+বাকি: ${due} টাকা
+
+মিটিং তারিখ:
+${meetingDate}
+
+মোবাইল:
+${member.mobile}
+
+ধন্যবাদ`;
+
+    smsList.push({
+      number: member.mobile,
+      text: msg
+    });
+
+  });
+
+  // প্রথম সদস্যকে SMS Open
+  if(smsList.length > 0){
+
+    let first = smsList[0];
+
+    let smsURL =
+`sms:${first.number}?body=${encodeURIComponent(first.text)}`;
+
+    window.location.href = smsURL;
+
+    alert(
+"প্রতি সদস্যের SMS আলাদা করে পাঠাতে হবে।"
+    );
+  }
+}
+// ===== লোন =====
+function renderLoan(){
+
+let html = "";
+
+// ===== LOAN MARQUEE =====
+let loanText = "";
+
+let totalBorrowers = loans.length;
+let totalLoanAmount = 0;
+let totalDueProfit = 0;
+
+loans.forEach(l => {
+
+  let c = getLoanCalc(l);
+
+  let loanAmount = l.amount || 0;
+  totalLoanAmount += loanAmount;
+
+  let dueProfit =
+    (c.profit || 0) -
+    (c.paidProfit || 0);
+
+  totalDueProfit += dueProfit;
+
+  let loanDate = new Date(l.date);
+
+  let runningMonths =
+    (new Date().getFullYear() - loanDate.getFullYear()) * 12 +
+    (new Date().getMonth() - loanDate.getMonth());
+
+  if(runningMonths < 0){
+    runningMonths = 0;
+  }
+
+  loanText += `
+🏦 ${l.name}
+| চলমান ${runningMonths} মাস
+| লোন ${loanAmount} টাকা
+| লাভ বাকি ${dueProfit.toFixed(2)} টাকা
+🔹 `;
+});
+
+html += `
+<marquee
+scrollamount="4"
+style="
+background:#1e3a8a;
+color:white;
+padding:8px;
+border-radius:8px;
+margin-bottom:10px;
+font-weight:bold;
+">
+👥 লোন গ্রহীতা: ${totalBorrowers} জন |
+🏦 মোট লোন: ${totalLoanAmount.toFixed(2)} টাকা |
+📈 মোট লাভ বাকি: ${totalDueProfit.toFixed(2)} টাকা |
+${loanText}
+</marquee>
+<h3>লোন সিট</h3>
+${isAdmin() ? `
+<input id="lid" type="number" placeholder="ID">
+<input id="lname" placeholder="নাম">
+<input id="lfather" placeholder="পিতার নাম">
+<input id="laddr" placeholder="ঠিকানা">
+<input id="lnid" type="number" placeholder="NID">
+<input id="lmobile" type="number" placeholder="মোবাইল">
+
+<input type="file"
+id="lphoto"
+onchange="previewLoanPhoto(event)">
+
+<img id="loanPhotoPreview"
+src="https://via.placeholder.com/60">
+<br><br>
+<input id="lamount"
+type="number"
+placeholder="লোন">
+
+<input id="ldate"
+type="date">
+
+<button onclick="addLoan()">
+যোগ
+</button>
+<hr>
+` : `
+<h4 style="color:red">
+🔒 লোন গ্রহিতাদের তালিকা দেখুন</h4>
+`}
+<input
+id="loanProfileSearch"
+placeholder="লোন ID / নাম / মোবাইল"
+style="
+width:100%;
+padding:6px;
+border-radius:3px;
+margin-bottom:6px;
+"
+oninput="liveSearchLoanMember()">
+
+<div id="loanProfile"></div>
+
+<div class="table-container">
+
+<table border="1" width="100%">
+
+<tr>
+<th>লোন ID</th>
+<th>ছবি</th>
+<th>নাম</th>
+<th>পিতার নাম</th>
+<th>মোবাইল</th>
+<th>NID</th>
+<th>লোন</th>
+<th>লাভ বাকি</th>
+<th>তারিখ</th>
+<th>মোট বাকি</th>
+<th>লাভ জমা</th>
+<th>মোট পরিশোধ</th>
+<th>পরিশোধ</th>
+<th>ডিলিট</th>
+</tr>
+`;
+
+loans.forEach((l,i)=>{
+
+let c = getLoanCalc(l);
+
+html += `
+
+<tr>
+
+<td>${l.id}</td>
+
+<td>
+<img src="${l.photo || 'https://via.placeholder.com/50'}"
+width="50">
+</td>
+
+<td onclick="showLoanProfile(${i})"
+style="cursor:pointer;color:cyan;font-weight:bold">
+
+${l.name}
+
+</td>
+
+<td>${l.father || '-'}</td>
+
+<td>${l.mobile || '-'}</td>
+
+<td>${l.nid || '-'}</td>
+
+<td style="color:#22c55e;font-weight:bold">
+${l.amount}
+</td>
+
+<td style="
+color:${(c.profit-c.paidProfit)>0?'orange':'green'};
+font-weight:bold">
+
+${(c.profit-c.paidProfit)>0
+? (c.profit-c.paidProfit).toFixed(2)
+: "✔ Paid"}
+
+</td>
+
+<td>${l.date}</td>
+
+<td style="color:red;font-weight:bold">
+
+${c.remaining.toFixed(2)}
+
+</td>
+
+<td style="color:green;font-weight:bold">
+
+${c.paidProfit.toFixed(2)}
+
+</td>
+
+<td style="color:#0ea5e9;font-weight:bold">
+
+${(c.paidLoan + c.paidProfit).toFixed(2)}
+
+</td>
+
+<td>
+
+${isAdmin()
+? `
+<button onclick="payLoan(${i})">
+পরিশোধ
+</button>
+`
+: "🔒"
+}
+
+</td>
+
+<td>
+
+${isAdmin()
+? `
+<button
+onclick="delLoan(${i})"
+style="background:red;color:white;">
+
+X
+
+</button>
+`
+: "🔒"
+}
+
+</td>
+
+</tr>
+`;
+
+});
+
+html += `
+</table>
+</div>
+
+`;
+
+document.getElementById("loan").innerHTML = html;
+
+}
+function liveSearchLoanMember(){
+
+let key =
+document.getElementById("loanProfileSearch")
+.value.trim().toLowerCase();
+
+if(!key){
+document.getElementById("loanProfile").innerHTML="";
+return;
+}
+
+let loan = loans.find(l =>
+String(l.id) === key ||
+(l.name || "").toLowerCase().includes(key) ||
+(l.mobile || "").includes(key)
+);
+
+if(!loan){
+
+document.getElementById("loanProfile").innerHTML = `
+
+<div style="
+background:#fee2e2;
+color:red;
+padding:10px;
+border-radius:10px;
+margin-top:10px;
+">
+❌ লোন গ্রহীতা পাওয়া যায়নি
+</div>`;
+return;
+}let c = getLoanCalc(loan);
+
+let html = `
+
+<div style="
+background:white;
+padding:15px;
+margin-top:10px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+"><center><img
+src="${loan.photo || 'https://via.placeholder.com/120'}"
+style="
+width:100px;
+height:100px;
+border-radius:50%;
+border:3px solid #1e3a8a;
+object-fit:cover;
+">
+
+<h2>${loan.name}</h2></center><hr><b>🆔 লোন ID:</b> ${loan.id}<br>
+<b>👨 পিতার নাম:</b> ${loan.father || "-"}<br>
+<b>📱 মোবাইল:</b> ${loan.mobile || "-"}<br>
+<b>🪪 NID:</b> ${loan.nid || "-"}<br>
+<b>🏠 ঠিকানা:</b> ${loan.addr || "-"}<br>
+<b>📅 লোন তারিখ:</b> ${loan.date}<br>
+
+<hr><div style="color:#16a34a;font-weight:bold;">
+🏦 মোট লোন: ${loan.amount} টাকা
+</div><div style="color:#2563eb;font-weight:bold;">
+📈 মোট লাভ: ${c.profit.toFixed(2)} টাকা
+</div><div style="color:#22c55e;font-weight:bold;">
+💰 লাভ পরিশোধ: ${c.paidProfit.toFixed(2)} টাকা
+</div><div style="color:#f59e0b;font-weight:bold;">
+💵 লোন পরিশোধ: ${c.paidLoan.toFixed(2)} টাকা
+</div><div style="color:#dc2626;font-weight:bold;">
+❌ মোট বাকি: ${c.remaining.toFixed(2)} টাকা
+</div><hr>
+<button
+onclick="addLoanProfit(${loans.indexOf(loan)})"
+style="
+background:#9333ea;
+color:white;
+padding:10px;
+border:none;
+border-radius:8px;
+margin-left:5px;
+">
+📈 লাভ জমা
+</button>
+${isAdmin() ? `
+
+<button
+onclick="payLoan(${loans.indexOf(loan)})"
+style="
+background:#16a34a;
+color:white;
+padding:10px;
+border:none;
+border-radius:8px;
+">
+💰 পরিশোধ
+</button>
+
+` : ""}
+
+</div>
+`;document.getElementById("loanProfile").innerHTML = html;
+}
+function addLoanProfit(loanIndex){
+
+if(!isAdmin()){
+alert("❌ শুধুমাত্র Admin লাভ জমা করতে পারবে");
+return;
+}
+
+let amount = prompt("লাভ জমার পরিমাণ লিখুন");
+
+if(!amount) return;
+
+amount = Number(amount);
+
+if(amount <= 0){
+alert("সঠিক পরিমাণ লিখুন");
+return;
+}
+
+profits.push({
+loanId: loans[loanIndex].id,
+memberId: loans[loanIndex].id,
+amount: amount,
+date: new Date().toISOString().split("T")[0]
+});
+
+save();
+saveLoans();
+
+renderLoan();
+renderDashboard();
+
+alert("✅ লাভ জমা হয়েছে");
+}
+// ===== লোন ছবি প্রিভিউ =====
+function previewLoanPhoto(event){
+  let file = event.target.files[0];
+  if(!file) return;
+  let reader = new FileReader();
+  reader.onload = function(){ document.getElementById("loanPhotoPreview").src = reader.result; }
+  reader.readAsDataURL(file);
+}
+
+// ===== লোন যোগ =====
+function addLoan(){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+let id = document.getElementById("lid").value.trim();
+let name = document.getElementById("lname").value.trim();
+let father = document.getElementById("lfather").value.trim();
+let addr = document.getElementById("laddr").value.trim();
+let mobile = document.getElementById("lmobile").value.trim();
+let nid = document.getElementById("lnid").value.trim();
+let photo = document.getElementById("loanPhotoPreview").src;
+let amount = Number(document.getElementById("lamount").value);
+let date = document.getElementById("ldate").value;
+
+if(!id || !name || !father || !amount || !date){
+  alert("সব তথ্য দিন");
+  return;
+}
+
+if(loans.some(l=>l.id==id)){
+  alert("এই ID আগে আছে");
+  return;
+}
+// ===== Cash Check =====
+let totalSaving = savings.reduce((a,b)=>a+b.amount,0);
+
+let totalProfit = profits.reduce((a,b)=>a+b.amount,0);
+
+let totalExpense = expenses.reduce((a,b)=>a+b.amount,0);
+
+let totalLoanGiven = loans.reduce((a,b)=>a+b.amount,0);
+
+let totalLoanRepayment = loans
+  .flatMap(l=>l.payments || [])
+  .reduce((a,b)=>a+b.amount,0);
+
+let cash =
+  totalSaving +
+  totalProfit +
+  totalLoanRepayment -
+  totalExpense -
+  totalLoanGiven;
+
+if(amount > cash){
+  alert("❌ দুঃখিত ক্যাশে পর্যাপ্ত টাকা নেই তাই লোন প্রদান করা যাচ্ছে না");
+  return;
+}
+loans.push({
+  id,name,father,addr,mobile,nid,photo,amount,date,payments:[]
+});
+
+saveLoans();
+renderLoan();
+renderDashboard();
+clearLoanForm();
+}
+// ===== লোন ডিলিট =====
+function delLoan(i){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+if(!checkPassword()) return;
+
+if(confirm("ডিলিট করবেন?")){
+  loans.splice(i,1);
+  saveLoans();
+  renderLoan();
+  renderDashboard();
+}
+}
+// ===== লোন পরিশোধ =====
+function payLoan(i){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+let loan = loans[i];
+let c = getLoanCalc(loan);
+
+let pay = prompt("পরিশোধ লিখুন (বাকি: " + c.remaining + ")");
+if(!pay) return;
+
+pay = Number(pay);
+
+if(pay <= 0 || pay > c.remaining){
+  alert("ভুল পরিমাণ");
+  return;
+}
+
+loan.payments.push({
+  amount: pay,
+  date: new Date().toISOString().split('T')[0]
+});
+
+saveLoans();
+renderLoan();
+renderDashboard();
+}
+// ===== প্রোফাইল দেখানো =====
+function showLoanProfile(i){
+
+let loan = loans[i];
+
+// ===== MERGE HISTORY =====
+let loanPays = (loan.payments || []).map(p => ({
+  type: "loan",
+  amount: p.amount,
+  date: p.date
+}));
+
+let profitPays = profits
+  .filter(p => p.loanId == loan.id)
+  .map(p => ({
+    type: "profit",
+    amount: p.amount,
+    date: p.date
+  }));
+
+let all = [...loanPays, ...profitPays];
+
+// ===== SORT BY DATE =====
+all.sort((a,b)=> new Date(a.date) - new Date(b.date));
+
+let history = "";
+
+// ===== CALC =====
+all.forEach((p,index)=>{
+
+let loanDate = new Date(loan.date);
+let payDate = new Date(p.date);
+
+let days = Math.floor((payDate - loanDate)/(1000*60*60*24));
+if(days < 0) days = 0;
+
+let dailyRate = (loan.amount * 0.05) / 30;
+let profitTillNow = dailyRate * days;
+
+let totalTillNow = loan.amount + profitTillNow;
+
+// 👉 total paid till this date
+let paidLoan = all
+  .filter(x => new Date(x.date) <= payDate && x.type=="loan")
+  .reduce((a,b)=>a+b.amount,0);
+
+let paidProfit = all
+  .filter(x => new Date(x.date) <= payDate && x.type=="profit")
+  .reduce((a,b)=>a+b.amount,0);
+
+let remaining = totalTillNow - (paidLoan + paidProfit);
+if(remaining < 0) remaining = 0;
+
+// ===== label =====
+let label = p.type === "loan" ? "লোন পরিশোধ" : "লাভ জমা";
+
+history += `
+<tr>
+<td>${p.date}</td>
+<td>${label}</td>
+<td>${p.amount}</td>
+<td>${remaining.toFixed(2)}</td>
+</tr>`;
+});
+
+// ===== CURRENT =====
+let c = getLoanCalc(loan);
+
+document.getElementById("loan").innerHTML = `
+<h2>লোন প্রোফাইল দেখুন</h2>
+
+<img src="${loan.photo}" style="width:90px;height:90px;border-radius:50%"><br><br>
+
+<b>লোন ID:</b> ${loan.id}<br>
+<b>লোন,গ্রহিতার নাম:</b> ${loan.name}<br>
+<b>পিতার,নাম:</b> ${loan.father}<br>
+<b>মোবাইল:</b> ${loan.mobile}<br>
+<b>NID:</b> ${loan.nid}<br>
+<b>ঠিকানা:</b> ${loan.addr}<br>
+<b>লোন,গ্রহনের তারিখ:</b> ${loan.date}<br><br>
+
+<b>মোট লোন:</b> ${loan.amount} টাকা<br>
+<b>এখন,প্রযন্ত মোট লাভ:</b> ${c.profit.toFixed(2)} টাকা<br>
+<b>মোট পরিশোধ:</b> ${(c.paidLoan + c.paidProfit).toFixed(2)} টাকা<br>
+<b>মোট বাকি:</b> ${c.remaining.toFixed(2)} টাকা<br>
+
+<h3>হিস্ট্রি</h3>
+
+<div class="table-container">
+<table border="1">
+<tr>
+<th>তারিখ</th>
+<th>বিবরন</th>
+<th>লাভ,জমার পরিমাণ</th>
+<th>লোন বাকি</th>
+</tr>
+
+${history || "<tr><td colspan='4'>কোন হিস্ট্রি নেই</td></tr>"}
+
+</table>
+</div>
+
+<br>
+<button onclick="renderLoan()">⬅ Back</button>
+   ধন্যবাদ
+`;
+}
+// ================= CLEAR FORM =================
+function clearLoanForm(){
+document.getElementById("lid").value="";
+document.getElementById("lname").value="";
+document.getElementById("lfather").value="";
+document.getElementById("laddr").value="";
+document.getElementById("lmobile").value="";
+document.getElementById("lnid").value="";
+document.getElementById("lamount").value="";
+document.getElementById("ldate").value="";
+document.getElementById("lphoto").value="";
+document.getElementById("loanPhotoPreview").src="https://via.placeholder.com/60";
+}
+
+
+// ================= SAVE =================
+function saveLoans(){
+  localStorage.setItem("loans", JSON.stringify(loans));
+}
+
+
+
+// ================= PROFIT TABLE =================
+
+function getMonthlyProfit(l){
+  return Number(l.amount || 0) * 0.05;
+}
+
+// ===== লাভ =====
+function renderProfit(){
+
+let months = [
+"জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল",
+"মে","জুন","জুলাই","আগস্ট",
+"সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
+];
+
+let html = `
+<h3>লাভ সিট (Daily + Monthly View)</h3>
+
+${isAdmin() ? `
+
+<select id="pname">
+
+<option value="">
+লোন নির্বাচন
+</option>
+
+${loans.map(l=>`
+<option value="${l.id}">
+${l.id} - ${l.name}
+</option>
+`).join("")}
+
+</select>
+
+<input id="pamount"
+type="number"
+placeholder="লাভ জমা">
+
+<input id="pdate"
+type="date">
+
+<button onclick="addProfit()">
+জমা
+</button>
+
+<hr>
+
+` : `
+
+<h4 style="color:red">
+🔒 লাভের তালিকা দেখুন</h4>
+
+`}
+
+<div class="table-container">
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+<th>ছবি</th>
+<th>নাম</th>
+<th>লোন</th>
+
+`;
+
+months.forEach(m=>{
+  html += `<th>${m}</th>`;
+});
+
+html += `
+
+<th>মোট লাভ</th>
+<th>জমা</th>
+<th>বাকি</th>
+<th>স্ট্যাটাস</th>
+<th>ডিলিট</th>
+
+</tr>
+`;
+
+let today = new Date();
+
+loans.forEach(l=>{
+
+let loanDate = new Date(l.date);
+
+let dailyRate =
+(l.amount * 0.05) / 30;
+
+let profitPerMonth =
+Array(12).fill(0);
+
+// ===== মাস অনুযায়ী লাভ =====
+for(
+let m = loanDate.getMonth();
+m <= today.getMonth();
+m++
+){
+
+let monthStart =
+new Date(today.getFullYear(), m, 1);
+
+let monthEnd =
+new Date(today.getFullYear(), m + 1, 0);
+
+let start =
+loanDate > monthStart
+? loanDate
+: monthStart;
+
+let end =
+(m === today.getMonth())
+? today
+: monthEnd;
+
+let days =
+Math.floor(
+(end - start) /
+(1000*60*60*24)
+) + 1;
+
+profitPerMonth[m] =
+dailyRate * days;
+
+}
+
+// ===== জমা =====
+let payments =
+profits.filter(
+p => p.loanId == l.id
+);
+
+let remaining =
+[...profitPerMonth];
+
+payments.forEach(p=>{
+
+let amount =
+Number(p.amount);
+
+for(
+let m = loanDate.getMonth();
+m <= today.getMonth();
+m++
+){
+
+if(amount <= 0) break;
+
+if(remaining[m] > 0){
+
+let cut =
+Math.min(
+amount,
+remaining[m]
+);
+
+remaining[m] -= cut;
+
+amount -= cut;
+
+}
+
+}
+
+});
+
+// ===== মোট হিসাব =====
+let totalProfit =
+profitPerMonth.reduce(
+(a,b)=>a+b,
+0
+);
+
+let totalPaid =
+payments.reduce(
+(a,b)=>a+Number(b.amount),
+0
+);
+
+let totalDue =
+remaining.reduce(
+(a,b)=>a+b,
+0
+);
+
+html += `
+<tr>
+
+<td>${l.id}</td>
+
+<td>
+<img src="${l.photo || 'https://via.placeholder.com/40'}"
+width="40">
+</td>
+
+<td style="
+color:cyan;
+font-weight:bold;
+cursor:pointer;
+">
+
+${l.name}
+
+</td>
+
+<td style="color:#22c55e;font-weight:bold">
+${l.amount}
+</td>
+`;
+
+// ===== মাস =====
+months.forEach((_,i)=>{
+
+if(
+i < loanDate.getMonth()
+||
+i > today.getMonth()
+){
+
+html += `<td></td>`;
+
+}else{
+
+let paid =
+profitPerMonth[i] -
+remaining[i];
+
+html += remaining[i] > 0
+
+? `
+<td style="
+color:red;
+font-weight:bold;
+">
+
+${remaining[i].toFixed(2)}
+
+</td>
+`
+
+: `
+<td style="
+color:green;
+font-weight:bold;
+">
+
+✔ ${paid.toFixed(2)}
+
+</td>
+`;
+
+}
+
+});
+
+let status =
+totalDue === 0
+? "✔ PAID"
+: "DUE";
+
+html += `
+
+<td style="font-weight:bold">
+${totalProfit.toFixed(2)}
+</td>
+
+<td style="
+color:green;
+font-weight:bold;
+">
+
+${totalPaid.toFixed(2)}
+
+</td>
+
+<td style="
+color:red;
+font-weight:bold;
+">
+
+${totalDue.toFixed(2)}
+
+</td>
+
+<td style="
+color:${totalDue===0?'green':'red'};
+font-weight:bold;
+">
+
+${status}
+
+</td>
+
+<td>
+
+${isAdmin()
+
+? `
+<button
+onclick="deleteProfit('${l.id}')"
+style="
+background:red;
+color:white;
+">
+
+X
+
+</button>
+`
+
+: "🔒"
+
+}
+
+</td>
+
+</tr>
+`;
+
+});
+
+html += `
+</table>
+</div>
+`;
+
+document.getElementById("profit").innerHTML = html;
+
+}
+// ===== লাভ জমা =====
+function addProfit(){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+  
+let loanId = document.getElementById("pname").value;
+let amount = Number(document.getElementById("pamount").value);
+let date = document.getElementById("pdate").value;
+
+if(!loanId || !amount || !date){
+  alert("সব তথ্য দিন");
+  return;
+}
+
+profits.push({
+  loanId,
+  amount,
+  date
+});
+
+localStorage.setItem("profits", JSON.stringify(profits));
+
+renderLoan();
+renderProfit();
+renderDashboard();
+
+alert("লাভ জমা হয়েছে");
+}
+// ================= DELETE PROFIT =================
+function deleteProfit(loanId){
+if(!isAdmin()){
+    alert("শুধুমাত্র Admin সদস্য যোগ করতে পারবে");
+    return;
+  }
+if(confirm("এই লোনের সব লাভ ডিলিট করবেন?")){
+
+profits = profits.filter(p => String(p.loanId) !== String(loanId));
+
+localStorage.setItem("profits", JSON.stringify(profits));
+
+renderProfit();
+renderDashboard();
+renderLoan();
+alert("ডিলিট সফল");
+}
+}
+// ===== ব্যয় =====
+function renderExpense(){
+
+let html = `<h3>ব্যয়</h3>`;
+
+// ===== ONLY ADMIN CAN ADD =====
+if(isAdmin()){
+
+html += `
+
+<input id="ename"
+placeholder="কারণ"
+style="width:220px">
+
+<input id="eamount"
+type="number"
+placeholder="টাকা"
+style="width:180px">
+
+<input type="date"
+id="edate"
+style="width:230px">
+
+<button onclick="addExpense()">
+যোগ
+</button>
+
+`;
+
+}else{
+
+html += `
+<h4 style="color:red;">
+🔒 শুধু ব্যয়ের তালিকা দেখতে পারবেন
+</h4>
+`;
+
+}
+
+html += `
+
+<div class="table-container">
+
+<table border="0"
+style="font-size:18px;width:auto">
+
+<tr>
+
+<th>কারণ</th>
+<th>টাকা</th>
+<th>তারিখ</th>
+<th>ডিলিট</th>
+
+</tr>
+
+`;
+
+expenses.forEach((e,i)=>{
+
+html += `
+
+<tr>
+
+<td>${e.name}</td>
+
+<td style="color:red;font-weight:bold">
+${e.amount}
+</td>
+
+<td>${e.date}</td>
+
+<td>
+
+${isAdmin()
+
+? `
+
+<button
+onclick="delExpense(${i})"
+style="background:red;color:white;">
+
+X
+
+</button>
+
+`
+
+: "🔒"
+
+}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+html += `
+</table>
+</div>
+`;
+
+document.getElementById("expense").innerHTML = html;
+
+}
+
+// ===== ব্যয় যোগ =====
+function addExpense(){
+
+if(!isAdmin()){
+
+alert("❌ শুধুমাত্র Admin ব্যয় যোগ করতে পারবে");
+
+return;
+
+}
+
+let name =
+document.getElementById("ename").value.trim();
+
+let amount =
+Number(document.getElementById("eamount").value);
+
+let date =
+document.getElementById("edate").value;
+
+if(!name || !amount || !date){
+
+alert("সব তথ্য দিন");
+
+return;
+
+}
+
+expenses.push({
+
+name,
+amount,
+date
+
+});
+
+localStorage.setItem(
+"expenses",
+JSON.stringify(expenses)
+);
+
+renderExpense();
+
+renderDashboard();
+
+alert("✅ ব্যয় যোগ হয়েছে");
+
+document.getElementById("ename").value = "";
+document.getElementById("eamount").value = "";
+document.getElementById("edate").value = "";
+
+}
+
+// ===== ব্যয় ডিলিট =====
+function delExpense(i){
+
+if(!isAdmin()){
+
+alert("❌ শুধুমাত্র Admin ডিলিট করতে পারবে");
+
+return;
+
+}
+
+if(!checkPassword()) return;
+
+let ok = confirm("ব্যয় ডিলিট করবেন?");
+if(!ok) return;
+
+expenses.splice(i,1);
+
+localStorage.setItem(
+"expenses",
+JSON.stringify(expenses)
+);
+
+renderExpense();
+
+renderDashboard();
+
+alert("✅ ব্যয় ডিলিট হয়েছে");
+
+}
+// ===== মাসিক রিপোর্ট ====
+function renderReport(){
+  let months=["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+
+  let html="<h3>মাসিক রিপোর্ট দেখুন</h3><div class='table-container'><table border='1'>\
+  <tr>\
+    <th>মাস</th>\
+    <th>সঞ্চয়</th>\
+    <th>উত্তোলন</th>\
+    <th>লাভ জমা</th>\
+    <th>লোন ফেরত</th>\
+    <th>ব্যয়</th>\
+    <th>নতুন লোন</th>\
+    <th>মাস শেষে ক্যাশ</th>\
+  </tr>";
+
+  let runningCash=0;
+
+  for(let i=0;i<12;i++){
+
+    let s=savings.filter(x=>new Date(x.date).getMonth()==i).reduce((a,b)=>a+b.amount,0);
+
+    // 🔥 উত্তোলন আলাদা করে
+    let withdraw=savings
+      .filter(x=>new Date(x.date).getMonth()==i && x.amount<0)
+      .reduce((a,b)=>a+Math.abs(b.amount),0);
+
+    let p=profits.filter(x=>new Date(x.date).getMonth()==i)
+      .reduce((a,b)=>a+b.amount,0);
+
+    let e=expenses.filter(x=>new Date(x.date).getMonth()==i)
+      .reduce((a,b)=>a+b.amount,0);
+
+    let l=loans.filter(x=>new Date(x.date).getMonth()==i)
+      .reduce((a,b)=>a+b.amount,0);
+
+    let loanRepayment=loans.flatMap(l=>l.payments||[])
+      .filter(pmt=>new Date(pmt.date).getMonth()==i)
+      .reduce((a,b)=>a+b.amount,0);
+
+    runningCash += s + p + loanRepayment - e - l;
+
+    html+=`
+    <tr>
+      <td>${months[i]}</td>
+      <td>${s}</td>
+      <td style="color:red">${withdraw}</td>
+      <td>${p}</td>
+      <td>${loanRepayment}</td>
+      <td>${e}</td>
+      <td>${l}</td>
+      <td style="color:blue;font-weight:bold">${runningCash}</td>
+    </tr>`;
+  }
+
+  html+="</table></div>";
+
+  document.getElementById("report").innerHTML=html;
+}
+// ===== Show Dashboard initially =====
+let role = localStorage.getItem("role");
+
+if(role === "member"){
+  document.querySelector(".menu").style.display = "none";
+  let memberId = localStorage.getItem("memberId");
+  viewProfile(memberId);
+}else{
+  show("dashboard");
+}
+</script>
+</body>
+</html>
